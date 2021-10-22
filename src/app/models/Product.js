@@ -19,7 +19,13 @@ const MOCK_PRODUCTS = [
 // CUIDADO: ☢️ DAQUI PRA CIMA É TUDO MOCK ☢️
 
 class Product {
-  async findAll() {
+  async findAll(configs) {
+    if (configs && configs.where) {
+      return MOCK_PRODUCTS.filter(product =>
+        product.name.toLowerCase().includes(configs.where.name.toLowerCase())
+      );
+    }
+
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     return MOCK_PRODUCTS;

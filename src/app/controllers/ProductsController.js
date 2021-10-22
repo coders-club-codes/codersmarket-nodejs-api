@@ -2,8 +2,16 @@ import Product from '../models/Product';
 
 class ProductsController {
   async index(req, res) {
-    const products = await Product.findAll({});
+    if (req.query.name) {
+      const products = await Product.findAll({
+        where: {
+          name: req.query.name,
+        },
+      });
+      return res.status(200).json(products);
+    }
 
+    const products = await Product.findAll({});
     // Status 200: OK Success
     return res.status(200).json(products);
   }
