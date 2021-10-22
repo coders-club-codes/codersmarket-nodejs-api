@@ -31,11 +31,13 @@ class ProductsController {
   }
 
   async update(req, res) {
-    return res.json({ success: true });
+    const nUpdated = await Product.update(req.params.id);
+    return res.json({ sucess: true, nUpdated });
   }
 
   async delete(req, res) {
-    return res.json({ success: true });
+    const nDeleted = await Product.destroy(req.params.id);
+    return res.json({ sucess: true, nDeleted });
   }
 }
 

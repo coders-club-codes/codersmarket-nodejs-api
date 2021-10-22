@@ -38,9 +38,11 @@ class Product {
     MOCK_PRODUCTS.push(newProduct);
     return newProduct;
   }
+
   async update() {
     return 1;
   }
+
   async destroy() {
     return 1;
   }
