@@ -1,0 +1,23 @@
+{
+  "name": "codersmarket-nodejs-api",
+  "version": "1.0.0",
+  "description": "An api-based application focused on analyzing the main aspects of a REST API using express",
+  "main": "src/index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node src"
+  },
+  "keywords": [
+    "REST",
+    "API",
+    "Express",
+    "NodeJS"
+  ],
+  "author": "Wellington S. Almeida (WellsSA)",
+  "license": "MIT"
+}
