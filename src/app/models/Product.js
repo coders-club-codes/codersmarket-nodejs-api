@@ -40,10 +40,12 @@ class Product {
   }
 
   async update() {
+    // TODO: implement mocked update method
     return 1;
   }
 
   async destroy() {
+    // TODO: implement mocked update method
     return 1;
   }
 }
