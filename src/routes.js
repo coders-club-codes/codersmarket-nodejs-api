@@ -7,8 +7,8 @@ const routes = new Router();
 routes.get('/products', ProductsController.index);
 routes.get('/products/:id', ProductsController.find);
 routes.post('/products', ProductsController.create);
-routes.put('/products', ProductsController.update);
-routes.delete('/products', ProductsController.delete);
+routes.put('/products/:id', ProductsController.update);
+routes.delete('/products/:id', ProductsController.delete);
 
 routes.get('/users', UsersController.index);
 routes.get('/users/:id', UsersController.find);
