@@ -1,2 +1,8 @@
+# Project dependencies
 node_modules
+
+# Environment variables
 .env
+
+# Build auto-generated files
+build
