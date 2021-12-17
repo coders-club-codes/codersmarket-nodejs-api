@@ -39,12 +39,19 @@ class ProductsController {
   }
 
   async update(req, res) {
-    const nUpdated = await Product.update(req.params.id);
+    const { id } = req.params;
+    const { name, price } = req.body;
+    const nUpdated = await Product.update({ name, price }, {
+      where: { id: id },
+    });
     return res.json({ sucess: true, nUpdated });
   }
 
   async delete(req, res) {
-    const nDeleted = await Product.destroy(req.params.id);
+    const { id } = req.params;
+    const nDeleted = await Product.destroy({
+      where: { id: id },
+    });
     return res.json({ sucess: true, nDeleted });
   }
 }
