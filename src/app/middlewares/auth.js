@@ -23,6 +23,9 @@ export default (req, res, next) => {
     console.log(error);
     if (error.name === 'JsonWebTokenError')
       return res.status(401).json({ error: 'Invalid token provided' });
-    return res.status(500);
+    if (error.name === 'TokenExpiredError')
+      return res.status(401).json({ error: 'Token authentication expired' });
+      
+    return res.status(500).json({ error: 'Internal server error'});
   }
 };
