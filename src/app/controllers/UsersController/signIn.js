@@ -22,7 +22,7 @@ export default async function (req, res) {
     });
 
     // verificar o hash das senhas
-    if (!user || !(await User.checkPassword(password, user.password))) {
+    if (!user || !(await user.checkPassword(password))) {
       return res.status(401).json({
         error: 'Unauthorized access. verify your email and password',
       });
@@ -38,6 +38,6 @@ export default async function (req, res) {
   } catch (error) {
     if (error.name === 'ValidationError')
       return res.status(400).json({ error: error.message });
-    return res.status(500);
+    return res.status(500).json({ error: 'Internal server error'});
   }
 }

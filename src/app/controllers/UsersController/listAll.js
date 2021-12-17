@@ -1,10 +1,7 @@
-export default function (req, res) {
-  return res.status(200).json([
-    {
-      name: 'Zezim',
-    },
-    {
-      name: 'Zuleide',
-    },
-  ]);
+import { User } from "../../models";
+
+
+export default async function (req, res) {
+  const users = await User.findAll()
+  return res.status(200).json(users);
 }
