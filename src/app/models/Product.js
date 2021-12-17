@@ -1,59 +1,28 @@
-// CUIDADO: ☢️ DAQUI PRA BAIXO É TUDO MOCK ☢️
-const MOCK_PRODUCTS = [
-  {
-    id: '0',
-    name: 'Arroz 1k marca X',
-    price: 5.7,
-  },
-  {
-    id: '1',
-    name: 'Feijão 1k marca Y',
-    price: 10.7,
-  },
-  {
-    id: '2',
-    name: 'Danoninho 12 unidades',
-    price: 15,
-  },
-];
-// CUIDADO: ☢️ DAQUI PRA CIMA É TUDO MOCK ☢️
+import Sequelize, { Model } from 'sequelize';
 
-class Product {
-  async findAll(configs) {
-    if (configs && configs.where) {
-      return MOCK_PRODUCTS.filter(product =>
-        product.name.toLowerCase().includes(configs.where.name.toLowerCase())
-      );
-    }
-
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    return MOCK_PRODUCTS;
-  }
-
-  async findByPk(id) {
-    const product = MOCK_PRODUCTS.find(product => product.id === id);
-    return product;
-  }
-
-  async create(product) {
-    const newProduct = {
-      id: MOCK_PRODUCTS.length.toString(),
-      ...product,
-    };
-    MOCK_PRODUCTS.push(newProduct);
-    return newProduct;
-  }
-
-  async update() {
-    // TODO: implement mocked update method
-    return 1;
-  }
-
-  async destroy() {
-    // TODO: implement mocked update method
-    return 1;
+class Product extends Model {
+  static init(sequelize) {
+    super.init(
+      {
+        id: {
+          type: Sequelize.UUID,
+          defaultValue: Sequelize.UUIDV4,
+          allowNull: false,
+          primaryKey: true,
+        },
+        name: Sequelize.STRING,
+        price: {
+          type: Sequelize.FLOAT,
+          allowNull: false,
+        },
+      },
+      {
+        tableName: 'products',
+        sequelize,
+      }
+    );
+    return this;
   }
 }
 
-export default new Product();
+export default Product;
